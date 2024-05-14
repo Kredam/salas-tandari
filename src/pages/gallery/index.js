@@ -1,18 +1,14 @@
-import { graphql } from 'gatsby'
 import * as React from 'react'
+import { SEO } from '../../components/seo'
 import { useTranslation } from 'react-i18next'
+import { t } from 'i18next'
+import { graphql } from 'gatsby'
 
-const IndexPage = () => {
+const Gallery = () => {
   const { t } = useTranslation()
 
-  return (
-    <div>
-      <div>{t('introduction.title')}</div>
-    </div>
-  )
+  return <div>{t('contact.title')}</div>
 }
-
-export default IndexPage
 
 export const query = graphql`
   query ($language: String!) {
@@ -29,5 +25,6 @@ export const query = graphql`
     }
   }
 `
+export default Gallery
 
-export { Head } from '../components/seo'
+export const Head = () => <SEO title={t('contact.title')} />

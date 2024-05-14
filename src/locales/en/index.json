@@ -1,0 +1,63 @@
+{
+    "locales": {
+        "locale": "en_GB"
+    },
+    "main": {
+        "title": "Tandari Szállás",
+        "sub_title": "Rendezvényterem"
+    },
+    "main_page": "Main Page",
+    "introduction": {
+        "title": "Who are we?",
+        "desc": [
+            "For nearly ten years, we have been organizing weddings and various events to provide you and your guests with an unforgettable experience!",
+            "With a rich selection in our wedding venue, unique organization, and attentive hospitality, we await your dream event.",
+            "Our experienced team and our 170-seat restaurant provide full service, while we offer comfortable accommodation for our guests with 23+2 beds in 6 rooms for the big event.",
+            "In our green area, there is the opportunity to organize civil weddings outdoors (with a registrar).",
+            "Our parking lot provides space for 200 vehicles with security guard supervision.",
+            "Additionally, various outdoor activities are available for our guests, such as a children's playground, sports field, lakes, lookout tower, and countryside inn, offering relaxation.",
+            "We welcome you with love!"
+        ]
+    },
+    "procedure": {
+        "title": "Wedding Planning Procedure",
+        "steps": {
+            "1": {
+                "title": "Contact",
+                "desc": "First, get in touch with us so we can help you further"
+            },
+            "2": {
+                "title": "Consultations",
+                "desc": "We discuss further details via phone/email or in person. You can also personally inspect the surroundings."
+            },
+            "3": {
+                "title": "The Big Day",
+                "desc": "On the big day, all you have to do is show up with your guests, everything will be ready for you by then."
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "desc": [
+            "For reservations, inquiries about our prices, or if you have any questions, feel free to contact us!",
+            "You can send your questions to the following email address:",
+            "@",
+            "You can also reach us by phone at the following numbers:",
+            "Tandari Tünde-",
+            "Pálinkás József-",
+            "Get in touch with us, and we guarantee to make your upcoming event a memorable experience!"
+        ]
+    },
+    "gallery": {
+        "title": "Gallery"
+    },
+    "hostel": {
+        "title": "Hostel",
+        "desc": [
+            "We offer five rooms for our guests with a total of 21 beds. Each of our rooms is triple, with a double bed, a single bed, and a pull-out sofa, ensuring maximum comfort.",
+            "The rooms offer beautiful views of the lakes and the surroundings, equipped with underfloor heating, private bathroom, and free Wi-Fi.",
+            "Our room capacities are as follows: 1. - 7 people, 2. - 4 people, 3. - 4 people, 4. - 3 people, 5. - 3 people.",
+            "Upon prior arrangement, we provide breakfast, lunch, and dinner for our guests in our restaurant. Pets are also welcome in our accommodations."
+        ]
+    }
+}

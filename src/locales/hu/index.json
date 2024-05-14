@@ -1,0 +1,63 @@
+{
+    "locales": {
+        "locale": "hu_HU"
+    },
+    "main": {
+        "title": "Tandari Szállás",
+        "sub_title": "Rendezvényterem"
+    },
+    "main_page": "Főoldal",
+    "introduction": {
+        "title": "Kik vagyunk mi?",
+        "desc": [
+            "Közel tíz éve foglalkozunk esküvők és különböző rendezvények szervezésével, hogy Önnek és vendégeinek felejthetetlen élményt nyújtsunk!",
+            "Lakodalmas termünkben gazdag választékkal, egyedi szervezéssel és előzékeny vendéglátással várjuk álmai eseményét.",
+            "Tapasztalt csapatunk és 170 férőhelyes éttermünk teljes körű kiszolgálást biztosít, míg 6 szobában 23+2 ággyal kényelmes elhelyezést biztosítunk vendégeinknek a nagy eseményre.",
+            "Zöldövezetünkben lehetőség van a polgári esküvő szabadtéren történő megrendezésére (anyakönyvvezetővel).",
+            "Parkolónkban 200 gépjármű számára biztosítunk szabad helyet biztonsági őr felügyeletével.",
+            "Emellett a szabadban különböző kültéri tevékenységek is rendelkezésre állnak a vendégeink számára, mint például gyermekjátszótér, sportpálya, tavak, kilátó és tanyacsárda, amelyek kikapcsolódást kínálnak.",
+            "Szeretettel várjuk!"
+        ]
+    },
+    "procedure": {
+        "title": "Esküvőtervezés menete",
+        "steps": {
+            "1": {
+                "title": "Kapcsolatfelvétel",
+                "desc": "Először is vedd fel velünk a kapcsolatot, így tudunk majd segítenki Nektek a továbbaikban"
+            },
+            "2": {
+                "title": "Egyeztetések",
+                "desc": "Telfenon/emailen, illetve személyesen egyeztetünk a további részletekről. Személyesen is megtudjátok nézni a környzetet"
+            },
+            "3": {
+                "title": "A Nagy Nap",
+                "desc": "A Nagy Napon már csak meg kell jelennetek a vendégsereggel együtt, addigra minden készen vár rátok"
+            }
+        }
+    },
+    "contact": {
+        "title": "Kapcsolat",
+        "desc": [
+            "Helyfoglalással, árainkkal kapcsolatban, illetve, ha bármi kérdésed lenne fordulj hozzánk bizalommal!",
+            "Kérdéseidet a következő emailre tudod elküldeni:",
+            "@",
+            "Illetve telefonon is eltudsz minket érni, az alábbi telefonszámokon:",
+            "Tandari Tünde-",
+            "Pálinkás József-",
+            "Vedd fel velünk a kapcsolatot és mi garantáljuk, hogy az elkövetkező eseményedet egy felejthetetlen emlékké tesszük számotokra!"
+        ]
+    },
+    "gallery": {
+        "title": "Galéria"
+    },
+    "hostel": {
+        "title": "Hostel",
+        "desc": [
+            "Vendégeink számára öt szoba áll rendelkezésre összesen 21 ággyal. Minden szobánk háromágyas, és mindegyikben egy dupla-francia ágy, egy-egy külön ágy és egy szétnyitható kanapé található, így maximális kényelmet biztosítva.",
+            "A szobákból gyönyörű kilátás nyílik a tavakra, valamint a környezetre melyek padlófűtéssel, saját fürdőszobával, ingyenes Wi-Fi-vel rendelkeznek",
+            "Szobáink férőhelyei a következők: 1. - 7 fő, 2. - 4 fő, 3. - 4 fő, 4. - 3 fő, 5. - 3 fő.",
+            "A vendégeink számára előzetes egyeztetések szerint reggelit, ebédet és vacsorát biztosítunk éttermünkben. A szállásokon házikedvenceket is fogadunk."
+        ]
+    }
+}
