@@ -12,8 +12,9 @@ const SEO = ({ title, description, pathname, type, children }) => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    url: `${siteUrl}${pathname || ``}`,
+    url: `${siteUrl}/${pathname || ``}`,
   }
+
   return (
     <>
       <title>{seo.title}</title>
@@ -28,6 +29,16 @@ const SEO = ({ title, description, pathname, type, children }) => {
   )
 }
 
-const Head = () => <SEO />
+const Head = () => (
+  <>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <SEO />
+  </>
+)
 
 export { SEO, Head }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react'
 import { SEO } from '../../components/seo'
 import { useTranslation } from 'react-i18next'
@@ -27,4 +28,12 @@ export const query = graphql`
 `
 export default Gallery
 
-export const Head = () => <SEO title={t('contact.title')} />
+export const Head = (props) => {
+  const dataLanguage = props.data.locales.edges.find(
+    (e) => e.node.ns === 'index'
+  ).node.data
+
+  const parsedData = JSON.parse(dataLanguage)
+
+  return <SEO title={parsedData.gallery.title} pathname={location.pathname} />
+}

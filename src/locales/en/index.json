@@ -4,7 +4,7 @@
     },
     "main": {
         "title": "Tandari Szállás",
-        "sub_title": "Rendezvényterem"
+        "sub_title": "Event hall"
     },
     "main_page": "Main Page",
     "introduction": {
@@ -19,18 +19,19 @@
             "We welcome you with love!"
         ]
     },
+    "outro": ["Plan your upcoming", "wedding with us!"],
     "procedure": {
         "title": "Wedding Planning Procedure",
         "steps": {
-            "1": {
+            "0": {
                 "title": "Contact",
                 "desc": "First, get in touch with us so we can help you further"
             },
-            "2": {
+            "1": {
                 "title": "Consultations",
                 "desc": "We discuss further details via phone/email or in person. You can also personally inspect the surroundings."
             },
-            "3": {
+            "2": {
                 "title": "The Big Day",
                 "desc": "On the big day, all you have to do is show up with your guests, everything will be ready for you by then."
             }

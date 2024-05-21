@@ -1,16 +1,12 @@
-import utils from './src/utils/index.mjs'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
-import { createRequire } from 'module'
+const { join } = require('path')
+const { getLocales } = require('./src/utils/index')
 
-export const __dirname = dirname(fileURLToPath(import.meta.url))
+const { locales, defaultLocale } = getLocales()
 
-const require = createRequire(import.meta.url)
-
-const { locales, defaultLocale } = utils
-
-const languages = Object.keys(locales)
+const languages = locales.map((locale) => Object.keys(locale)[0])
 const defaultLanguage = Object.keys(defaultLocale)[0]
+
+console.log(languages, locales)
 
 const gatsbyRequiredRules = join(
   process.cwd(),
@@ -21,7 +17,7 @@ const gatsbyRequiredRules = join(
   'eslint-rules'
 )
 
-const config = {
+module.exports = {
   siteMetadata: {
     title: `Tandari Szállás`,
     siteUrl: `https://www.salas-tandari.com`,
@@ -29,6 +25,16 @@ const config = {
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-root-import',
+    'gatsby-plugin-image',
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: join(__dirname, 'src', 'images'),
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -79,5 +85,3 @@ const config = {
     },
   ],
 }
-
-export default config

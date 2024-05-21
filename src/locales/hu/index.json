@@ -19,18 +19,19 @@
             "Szeretettel várjuk!"
         ]
     },
+    "outro": ["Tervezd velünk te is", "A közelgő eskűvődet!"],
     "procedure": {
         "title": "Esküvőtervezés menete",
         "steps": {
-            "1": {
+            "0": {
                 "title": "Kapcsolatfelvétel",
                 "desc": "Először is vedd fel velünk a kapcsolatot, így tudunk majd segítenki Nektek a továbbaikban"
             },
-            "2": {
+            "1": {
                 "title": "Egyeztetések",
                 "desc": "Telfenon/emailen, illetve személyesen egyeztetünk a további részletekről. Személyesen is megtudjátok nézni a környzetet"
             },
-            "3": {
+            "2": {
                 "title": "A Nagy Nap",
                 "desc": "A Nagy Napon már csak meg kell jelennetek a vendégsereggel együtt, addigra minden készen vár rátok"
             }
