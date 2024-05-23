@@ -1,12 +1,11 @@
 const { join } = require('path')
-const { getLocales } = require('./src/utils/index')
+const { locales, defaultLocale } = require('./src/utils/index')
 
-const { locales, defaultLocale } = getLocales()
+console.log(locales)
+const languages = locales
+const defaultLanguage = defaultLocale
 
-const languages = locales.map((locale) => Object.keys(locale)[0])
-const defaultLanguage = Object.keys(defaultLocale)[0]
-
-console.log(languages, locales)
+console.log(languages, defaultLanguage)
 
 const gatsbyRequiredRules = join(
   process.cwd(),

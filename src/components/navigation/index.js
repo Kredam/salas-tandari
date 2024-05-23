@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react'
-import { useI18next } from 'gatsby-plugin-react-i18next'
+import { Link, useI18next } from 'gatsby-plugin-react-i18next'
 import styled from '@emotion/styled/macro'
 import LayoutContext from '../../hooks/layout-context'
 import { StaticImage } from 'gatsby-plugin-image'
 
 import clsx from 'clsx'
 import Shade from '../shade'
-
-// eslint-disable-next-line react/prop-types
 
 const StyledListItem = styled.a`
   &:before {
@@ -50,10 +48,11 @@ const Nav = styled.div`
   justify-content: between;
 `
 
-const Navigation = () => {
-  const { languages, changeLanguage, originalPath, t } = useI18next()
+const Navigation = ({ data }) => {
+  const { languages, originalPath, i18n, t } = useI18next()
   const { inverted } = useContext(LayoutContext)
   const { showHeaderPage } = useContext(LayoutContext)
+  const [open, setOpen] = React.useState(true)
 
   const options = {
     [t('main_page')]: '/',
@@ -61,6 +60,19 @@ const Navigation = () => {
     [t('gallery.title')]: '/gallery',
     [t('hostel.title')]: '/hostel',
   }
+
+  const icons = {
+    en: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg',
+    hu: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/HU.svg',
+  }
+
+  const handleOpen = () => {
+    setOpen(!open)
+  }
+
+  React.useEffect(() => {
+    console.log(open)
+  }, [open])
 
   return (
     <Nav
@@ -80,44 +92,85 @@ const Navigation = () => {
           <Shade />
         </>
       )}
-      {/* <TiThMenu className="z-10" /> */}
-      {/* <div>
-        {languages.map((lang) => {
-          const country = locales
-          const imgUrl = `http://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`
-          return (
-            <div key={lang} className="">
-            <img alt={lang} src={imgUrl} />
-            </div>
-          )
-        })}
-        </div> */}
-      <div className="flex flex-col z-10 w-screen shadow-sm">
-        <div
-          className="hidden w-full md:flex md:justify-end p-4"
-          id="navbar-default"
-        >
-          <ul className="font-medium font-serif flex p-4 md:p-0 mt-4 border rounded-lg border-black md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-            {Object.keys(options).map((option) => (
-              <li
-                key={option}
-                className="transition-all relative hover:bg-black/5 rounded-md p-3"
+      <div className="flex flex-col justify-between z-10 w-screen shadow-sm">
+        <div className="flex justify-between p-4 max-mobile:mt-4">
+          <div className="block mobile:flex mobile:justify-evenly px-4 w-40">
+            {languages.map((lng) => (
+              <Link
+                key={lng}
+                to={originalPath}
+                language={lng}
+                className={clsx('content-center')}
               >
-                <StyledListItem href={options[option]} aria-current="page">
-                  {option.toUpperCase()}
-                </StyledListItem>
-              </li>
+                <img
+                  width={32}
+                  alt={lng}
+                  src={icons[lng]}
+                  className={clsx(
+                    {
+                      'brightness-50': i18n.resolvedLanguage !== lng,
+                    },
+                    'mb-4 transition-all cursor-pointer hover:opacity-75'
+                  )}
+                />
+              </Link>
             ))}
-          </ul>
+          </div>
+          <div
+            className={clsx(
+              [open ? 'relative' : 'hidden'],
+              'w-full mobile:w-auto mobile:flex mobile:justify-end'
+            )}
+          >
+            {/* <ul className="absolute origin-top-right bg-white border rounded-md font-medium font-serif flex flex-col md:bg-transparent md:p-0 mt-4 md:flex-row md:space-x-8"> */}
+            <ul className="absolute max-mobile:w-full font-medium flex flex-col p-4 mobile:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 mobile:flex-row mobile:space-x-8 rtl:space-x-reverse mobile:mt-0 mobile:border-0 mobile:bg-transparent max-mobile:shadow-custom">
+              {Object.keys(options).map((option) => (
+                <li
+                  key={option}
+                  className="transition-all relative hover:bg-black/5 rounded-md p-3"
+                >
+                  <StyledListItem
+                    href={options[option]}
+                    className="max-mobile:text-black"
+                  >
+                    {option.toUpperCase()}
+                  </StyledListItem>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mobile:hidden">
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-ba rounded-lg mobile:hidden"
+            >
+              <svg
+                className="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
         {showHeaderPage && (
           <div className="flex justify-center h-screen flex-col">
-            <p className="font-serif font-semibold sm:text-6xl text-xl text-center content-center">
+            <h1 className="font-serif font-semibold sm:text-6xl text-center content-center">
               {t('main.title')}
-              <p className="font-serif sm:text-3xl text-2xl font-normal text-center content-center">
-                {t('main.sub_title')}
-              </p>
-            </p>
+            </h1>
+            <h2 className="font-serif sm:text-3xl font-normal text-center content-center">
+              {t('main.sub_title')}
+            </h2>
           </div>
         )}
       </div>

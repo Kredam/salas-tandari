@@ -5,9 +5,8 @@ import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
 import { SEO } from '../../components/seo'
 
-const Contact = ({ data }) => {
+const Contact = () => {
   const { t } = useI18next()
-  const contactImage = data.contactImage.childImageSharp.gatsbyImageData
   return (
     <div className="container h-full mx-auto m-8 p-8">
       <div className="flex justify-center">
@@ -27,9 +26,10 @@ const Contact = ({ data }) => {
             )
           )}
         </div>
-        <div className="w-full desktop:w-1/2 content-center">
+        <div className="w-full desktop:w-1/2 flex justify-center">
           <StaticImage
             src="../../images/contact.jpg"
+            width={400}
             className="rounded-lg shadow-custom"
           />
         </div>
@@ -51,11 +51,6 @@ export const query = graphql`
         }
       }
     }
-    contactImage: file(relativePath: { eq: "contact.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 800, quality: 100, layout: CONSTRAINED)
-      }
-    }
   }
 `
 export default Contact
@@ -67,5 +62,7 @@ export const Head = (props) => {
 
   const parsedData = JSON.parse(dataLanguage)
 
-  return <SEO title={parsedData.contact.title} pathname={location.pathname} />
+  return (
+    <SEO title={parsedData.contact.title} pathname={props.location.pathname} />
+  )
 }

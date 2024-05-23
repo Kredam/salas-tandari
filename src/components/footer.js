@@ -1,5 +1,5 @@
-import { useI18next } from 'gatsby-plugin-react-i18next'
 import React from 'react'
+import { useI18next } from 'gatsby-plugin-react-i18next'
 import { FaFacebookF } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
@@ -7,7 +7,6 @@ const footerStyle = {
   position: 'fixed',
   overflow: 'hidden',
   height: 100,
-  width: '100%',
   left: 0,
   bottom: 0,
 }
@@ -31,8 +30,11 @@ const Footer = () => {
       style={footerStyle}
       className="border-t-2 border-black bg-white font-serif"
     >
-      <div style={flexContainer} className="flex shadow-2xl justify-evenly">
-        <div className="w-[200px]">
+      <div
+        style={flexContainer}
+        className="flex shadow-2xl w-screen justify-evenly"
+      >
+        <div className="w-[150px]">
           <div>
             <body2>LOCATION</body2>
           </div>
@@ -51,15 +53,15 @@ const Footer = () => {
             <subtitle2>(TEL) PÁLINKÁS JÓZSEF +5614616161</subtitle2>
           </div>
         </div>
-        <div className="w-[200px] flex justify-evenly items-center">
-          <div className="size-14">
+        <div className="w-[150px] flex justify-evenly items-center">
+          <div className="size-12 content-center">
             <a href="https://www.facebook.com/TandariLake">
-              <FaFacebookF size={56} />
+              <FaFacebookF size={43} />
             </a>
           </div>
-          <div className="size-14">
+          <div className="size-12 content-center">
             <a href="https://X.com/SalasTandari">
-              <FaXTwitter size={56} />
+              <FaXTwitter size={43} />
             </a>
           </div>
         </div>

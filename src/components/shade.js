@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
 
-const Shade = ({ style }) => {
-  // const
+const Shade = () => {
   return (
     <div
       style={{

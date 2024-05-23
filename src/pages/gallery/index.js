@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react'
 import { SEO } from '../../components/seo'
-import { useTranslation } from 'react-i18next'
-import { t } from 'i18next'
 import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { useI18next } from 'gatsby-plugin-react-i18next'
 
-const Gallery = () => {
-  const { t } = useTranslation()
-
-  return <div>{t('contact.title')}</div>
+const Gallery = ({ data }) => {
+  const { t } = useI18next()
+  const images = data.galleryImages.nodes.map((img) => getImage(img))
+  return (
+    <div className="container w-full mx-auto">
+      <div className="flex flex-wrap justify-center h-full w-full gap-4 my-4">
+        {images.map((img, index) => (
+          <div key={index}>
+            <GatsbyImage image={img} className="rounded-lg shadow-custom" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export const query = graphql`
@@ -24,8 +34,16 @@ export const query = graphql`
         }
       }
     }
+    galleryImages: allFile(filter: { relativeDirectory: { eq: "gallery" } }) {
+      nodes {
+        childImageSharp {
+          gatsbyImageData(width: 300, quality: 100)
+        }
+      }
+    }
   }
 `
+
 export default Gallery
 
 export const Head = (props) => {
@@ -35,5 +53,7 @@ export const Head = (props) => {
 
   const parsedData = JSON.parse(dataLanguage)
 
-  return <SEO title={parsedData.gallery.title} pathname={location.pathname} />
+  return (
+    <SEO title={parsedData.gallery.title} pathname={props.location.pathname} />
+  )
 }

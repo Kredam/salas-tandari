@@ -11,15 +11,7 @@ import Shade from '../components/shade'
 const IndexPage = ({ data }) => {
   const { setInverted, setShowHeaderPage } = useContext(LayoutContext)
   const { t } = useTranslation()
-  // const outroPics = data.outroPics.childImageSharp.fluid
   const procedureImages = data.proceduresImages.nodes
-  // const introImageSources = [
-  //   data.introPicsMobile.childImageSharp.fluid,
-  //   {
-  //     ...data.introPics.childImageSharp.fluid,
-  //     media: `(min-width: 1024px)`,
-  //   }
-  // ]
 
   useEffect(() => {
     setInverted(true)
@@ -43,7 +35,7 @@ const IndexPage = ({ data }) => {
               )
             )}
           </div>
-          <div className="w-full desktop:w-1/2 content-center">
+          <div className="w-full desktop:w-1/2 text-center">
             <StaticImage src="../images/introductions.jpg" className="rounded-lg shadow-custom" />
           </div>
         </div>
@@ -53,7 +45,7 @@ const IndexPage = ({ data }) => {
       <div className='flex justify-center flex-wrap'>
         {procedureImages.map((procedure, index) => (
           <>
-            <div className='p-4 mx-auto mobile:w-[350px] w-full'>
+            <div className='p-4 mx-auto mobile:w-[350px] w-full text-center'>
               <GatsbyImage
                 image={procedure.childImageSharp.gatsbyImageData}
                 className="rounded-lg shadow-custom" />
@@ -82,10 +74,10 @@ const IndexPage = ({ data }) => {
           }} />
         <Shade />
       </div>
-      <div className='absolute top-8 w-full mx-auto font-serif'>
+      <div className='absolute top-8 w-full mx-auto font-serif p-8'>
           {t('outro', { returnObjects: true }).map(
             (paragraph, index) => (
-              <h1 key={index}>{paragraph.toUpperCase()}</h1>
+              <h1 key={index} className='max-tablet:text-[36px]'>{paragraph.toUpperCase()}</h1>
             )
           )}
       </div>
@@ -105,26 +97,6 @@ export const query = graphql`query ($language: String!) {
       }
     }
   }
-  file(relativePath: {eq: "header.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-    }
-  }
-  introPics: file(relativePath: {eq: "introductions.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(width: 800, quality: 100, layout: CONSTRAINED)
-    }
-  }
-  introPicsMobile: file(relativePath: {eq: "introductions.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(width: 400, quality: 100, layout: CONSTRAINED)
-    }
-  }
-  outroPics: file(relativePath: {eq: "outro.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-    }
-  }
   proceduresImages: allFile(
     filter: {relativePath: {regex: "/procedures/procedure/"}}
   ) {
@@ -132,11 +104,6 @@ export const query = graphql`query ($language: String!) {
       childImageSharp {
         gatsbyImageData(width: 400, height: 400, layout: CONSTRAINED)
       }
-    }
-  }
-  contactImage: file(relativePath: {eq: "contact.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(width: 800, quality: 100, layout: CONSTRAINED)
     }
   }
 }`
