@@ -1,19 +1,26 @@
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
-import * as React from 'react'
+import React, { useEffect, useContext } from 'react'
 import { SEO } from '../../components/seo'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { useI18next } from 'gatsby-plugin-react-i18next'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
+import LayoutContext from '../../hooks/layout-context'
 
 const Hostel = ({ data }) => {
-  const { t } = useI18next()
+  const { t } = useTranslation()
+  const { setShowHeaderPage } = useContext(LayoutContext)
+
+  useEffect(() => {
+    setShowHeaderPage(false)
+  }, [])
+
   const images = data.hostelImages.nodes.map((img) => getImage(img))
   return (
     <div className="container w-full mx-auto">
       <h2 className="font-semibold text-center font-serif my-4">
         {t('hostel.title')}
       </h2>
-      <div className="my-8 text-justify">
+      <div className="my-8 p-4 max-desktop:text-justify text-center">
         {t('hostel.desc', { returnObjects: true }).map((paragraph, index) => (
           <p className="font-sans" key={index}>
             {paragraph}
@@ -23,7 +30,11 @@ const Hostel = ({ data }) => {
       <div className="flex flex-wrap justify-center h-full w-full gap-4 my-8">
         {images.map((img, index) => (
           <div key={index}>
-            <GatsbyImage image={img} className="rounded-lg shadow-custom" />
+            <GatsbyImage
+              image={img}
+              alt="Hostel Room Image"
+              className="rounded-lg shadow-custom"
+            />
           </div>
         ))}
       </div>
@@ -61,9 +72,15 @@ export const Head = (props) => {
     (e) => e.node.ns === 'index'
   ).node.data
 
+  console.log(props)
+
   const parsedData = JSON.parse(dataLanguage)
 
   return (
-    <SEO title={parsedData.hostel.title} pathname={props.location.pathname} />
+    <SEO
+      title={parsedData.hostel.title}
+      lng={props.pageContext.language}
+      pathname={props.location.pathname}
+    />
   )
 }

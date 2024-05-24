@@ -1,12 +1,19 @@
 /* eslint-disable react/prop-types */
+import React, { useEffect, useContext } from 'react'
 import { graphql } from 'gatsby'
-import * as React from 'react'
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
+import { StaticImage } from 'gatsby-plugin-image'
 import { SEO } from '../../components/seo'
+import { useTranslation } from 'react-i18next'
+import LayoutContext from '../../hooks/layout-context'
 
 const Contact = () => {
-  const { t } = useI18next()
+  const { t } = useTranslation()
+  const { setShowHeaderPage } = useContext(LayoutContext)
+
+  useEffect(() => {
+    setShowHeaderPage(false)
+  }, [])
+
   return (
     <div className="container h-full mx-auto m-8 p-8">
       <div className="flex justify-center">
@@ -17,7 +24,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="flex justify-center flex-wrap">
-        <div className="w-full desktop:w-1/2 xl:px-4 py-4">
+        <div className="w-full desktop:w-1/2 xl:px-4 py-4 text-justify">
           {t('contact.desc', { returnObjects: true }).map(
             (paragraph, index) => (
               <p className="font-sans" key={index}>
@@ -28,7 +35,9 @@ const Contact = () => {
         </div>
         <div className="w-full desktop:w-1/2 flex justify-center">
           <StaticImage
+            alt="Contact Image"
             src="../../images/contact.jpg"
+            placeholder="blurred"
             width={400}
             className="rounded-lg shadow-custom"
           />
@@ -63,6 +72,10 @@ export const Head = (props) => {
   const parsedData = JSON.parse(dataLanguage)
 
   return (
-    <SEO title={parsedData.contact.title} pathname={props.location.pathname} />
+    <SEO
+      title={parsedData.contact.title}
+      lng={props.pageContext.language}
+      pathname={props.location.pathname}
+    />
   )
 }

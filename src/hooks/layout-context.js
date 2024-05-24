@@ -9,7 +9,7 @@ const LayoutContext = createContext(defaultContextValue)
 
 export const LayoutProvider = ({ children }) => {
   const [inverted, setInverted] = useState(false)
-  const [showHeaderPage, setShowHeaderPage] = useState(false)
+  const [showHeaderPage, setShowHeaderPage] = useState(true)
 
   return (
     <LayoutContext.Provider

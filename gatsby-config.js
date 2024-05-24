@@ -1,11 +1,8 @@
 const { join } = require('path')
 const { locales, defaultLocale } = require('./src/utils/index')
 
-console.log(locales)
 const languages = locales
 const defaultLanguage = defaultLocale
-
-console.log(languages, defaultLanguage)
 
 const gatsbyRequiredRules = join(
   process.cwd(),
@@ -19,6 +16,8 @@ const gatsbyRequiredRules = join(
 module.exports = {
   siteMetadata: {
     title: `Tandari Szállás`,
+    description: 'Tandari Szállás Rendezvényház',
+    defaultLang: defaultLanguage,
     siteUrl: `https://www.salas-tandari.com`,
   },
   plugins: [
@@ -56,6 +55,12 @@ module.exports = {
         autoLabel: 'dev-only',
         labelFormat: `[local]`,
         cssPropOptimization: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: true,
       },
     },
     {

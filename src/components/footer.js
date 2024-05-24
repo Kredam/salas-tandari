@@ -1,23 +1,23 @@
 import React from 'react'
-import { useI18next } from 'gatsby-plugin-react-i18next'
-import { FaFacebookF } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
+import styled from '@emotion/styled/macro'
+import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 
-const footerStyle = {
-  position: 'fixed',
-  overflow: 'hidden',
-  height: 100,
-  left: 0,
-  bottom: 0,
-}
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+  padding: 24px;
+`
 
-const flexContainer = {
-  height: '100%',
-  padding: 8,
-}
+const FlexItem = styled.div`
+  align-content: center;
+  width: ${(props) => props.$width}px;
+`
 
 const Footer = () => {
-  const { language, t } = useI18next()
+  const { t } = useTranslation()
 
   const showInMap = () => {
     window.open(
@@ -26,46 +26,45 @@ const Footer = () => {
   }
 
   return (
-    <div
-      style={footerStyle}
-      className="border-t-2 border-black bg-white font-serif"
-    >
-      <div
-        style={flexContainer}
-        className="flex shadow-2xl w-screen justify-evenly"
-      >
-        <div className="w-[150px]">
+    <div className="fixed h-[100px] left-0 bottom-0 border-t-2 border-black bg-white font-serif">
+      <FlexContainer className="shadow-2xl">
+        <FlexItem $width={150}>
           <div>
-            <body2>LOCATION</body2>
+            <p className="body2">LOCATION</p>
           </div>
           <div onClick={() => showInMap()} className="cursor-pointer">
-            <subtitle>Slatina, Martonoš, Serbia</subtitle>
+            <p className="subtitle">Slatina, Martonoš, Serbia</p>
           </div>
-        </div>
-        <div className="w-[300px] max-mobile:hidden">
+        </FlexItem>
+        <FlexItem $width={300} className="max-mobile:hidden">
           <div>
-            <body2>{t('contact.title').toUpperCase()}</body2>
-          </div>
-          <div>
-            <subtitle2>(TEL) TANDARI TÜNDE +22522222</subtitle2>
+            <p className="body2">{t('contact.title').toUpperCase()}</p>
           </div>
           <div>
-            <subtitle2>(TEL) PÁLINKÁS JÓZSEF +5614616161</subtitle2>
+            <p className="subtitle2">(TEL) TANDARI TÜNDE +22522222</p>
           </div>
-        </div>
-        <div className="w-[150px] flex justify-evenly items-center">
+          <div>
+            <p className="subtitle2">
+              (TEL) PÁLINKÁS JÓZSEF +381(0)63-7488-149
+            </p>
+          </div>
+        </FlexItem>
+        <FlexItem $width={150} className="flex justify-evenly items-center">
           <div className="size-12 content-center">
-            <a href="https://www.facebook.com/TandariLake">
-              <FaFacebookF size={43} />
+            <a
+              href="https://www.facebook.com/TandariLake"
+              aria-label="Facebook"
+            >
+              <FaFacebook size={43} />
             </a>
           </div>
           <div className="size-12 content-center">
-            <a href="https://X.com/SalasTandari">
-              <FaXTwitter size={43} />
+            <a href="https://X.com/SalasTandari" aria-label="X">
+              <FaTwitter size={43} />
             </a>
           </div>
-        </div>
-      </div>
+        </FlexItem>
+      </FlexContainer>
     </div>
   )
 }

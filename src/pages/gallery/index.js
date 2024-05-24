@@ -1,19 +1,28 @@
 /* eslint-disable react/prop-types */
-import * as React from 'react'
+import React, { useEffect, useContext } from 'react'
 import { SEO } from '../../components/seo'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { useI18next } from 'gatsby-plugin-react-i18next'
+import LayoutContext from '../../hooks/layout-context'
 
 const Gallery = ({ data }) => {
-  const { t } = useI18next()
+  const { setShowHeaderPage } = useContext(LayoutContext)
+
+  useEffect(() => {
+    setShowHeaderPage(false)
+  }, [])
+
   const images = data.galleryImages.nodes.map((img) => getImage(img))
   return (
-    <div className="container w-full mx-auto">
+    <div className="container w-full h-full mx-auto">
       <div className="flex flex-wrap justify-center h-full w-full gap-4 my-4">
         {images.map((img, index) => (
           <div key={index}>
-            <GatsbyImage image={img} className="rounded-lg shadow-custom" />
+            <GatsbyImage
+              image={img}
+              alt="Gallery image"
+              className="rounded-lg shadow-custom"
+            />
           </div>
         ))}
       </div>
@@ -54,6 +63,10 @@ export const Head = (props) => {
   const parsedData = JSON.parse(dataLanguage)
 
   return (
-    <SEO title={parsedData.gallery.title} pathname={props.location.pathname} />
+    <SEO
+      title={parsedData.gallery.title}
+      lng={props.pageContext.language}
+      pathname={props.location.pathname}
+    />
   )
 }

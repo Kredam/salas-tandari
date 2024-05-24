@@ -17,7 +17,8 @@ const StyledListItem = styled.a`
     top: 0px;
     content: '';
     background: #000000;
-    opacity: 0.1;
+    border-radius: 6px;
+    opacity: 0.15;
     transition: all 0.3s;
   }
 
@@ -41,19 +42,29 @@ const imgStyles = {
   letterSpacing: 5,
 }
 
+const MenuButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+`
+
 const Nav = styled.div`
   display: flex;
   zindex: 10;
-  height: 100%;
+  min-height: 70px;
   justify-content: between;
 `
 
-const Navigation = ({ data }) => {
+const Navigation = () => {
   const { languages, originalPath, i18n, t } = useI18next()
   const { inverted } = useContext(LayoutContext)
   const { showHeaderPage } = useContext(LayoutContext)
   const [open, setOpen] = React.useState(true)
-
   const options = {
     [t('main_page')]: '/',
     [t('contact.title')]: '/contact',
@@ -62,29 +73,22 @@ const Navigation = ({ data }) => {
   }
 
   const icons = {
-    en: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg',
-    hu: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/HU.svg',
+    en: 'https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg',
+    hu: 'https://purecatamphetamine.github.io/country-flag-icons/3x2/HU.svg',
   }
 
   const handleOpen = () => {
     setOpen(!open)
   }
 
-  React.useEffect(() => {
-    console.log(open)
-  }, [open])
-
   return (
-    <Nav
-      className={clsx('mx-auto h-screen', [
-        inverted ? 'text-white' : 'text-black',
-      ])}
-    >
+    <Nav className={clsx('mx-auto', [inverted ? 'text-white' : 'text-black'])}>
       {showHeaderPage && (
         <>
           <StaticImage
             src="../../images/header.jpg"
             layout="fullWidth"
+            placeholder="blurred"
             className="h-screen"
             style={imgStyles}
             alt="Header Greek Food"
@@ -100,17 +104,18 @@ const Navigation = ({ data }) => {
                 key={lng}
                 to={originalPath}
                 language={lng}
-                className={clsx('content-center')}
+                className="content-center h-full"
               >
                 <img
-                  width={32}
+                  width={42}
+                  height={28}
                   alt={lng}
                   src={icons[lng]}
                   className={clsx(
                     {
                       'brightness-50': i18n.resolvedLanguage !== lng,
                     },
-                    'mb-4 transition-all cursor-pointer hover:opacity-75'
+                    'mb-4 transition-all cursor-pointer hover:opacity-75 rounded-md'
                   )}
                 />
               </Link>
@@ -122,16 +127,15 @@ const Navigation = ({ data }) => {
               'w-full mobile:w-auto mobile:flex mobile:justify-end'
             )}
           >
-            {/* <ul className="absolute origin-top-right bg-white border rounded-md font-medium font-serif flex flex-col md:bg-transparent md:p-0 mt-4 md:flex-row md:space-x-8"> */}
             <ul className="absolute max-mobile:w-full font-medium flex flex-col p-4 mobile:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 mobile:flex-row mobile:space-x-8 rtl:space-x-reverse mobile:mt-0 mobile:border-0 mobile:bg-transparent max-mobile:shadow-custom">
               {Object.keys(options).map((option) => (
                 <li
                   key={option}
-                  className="transition-all relative hover:bg-black/5 rounded-md p-3"
+                  className="transition-all relative hover:bg-black/5 rounded-md p-2"
                 >
                   <StyledListItem
                     href={options[option]}
-                    className="max-mobile:text-black"
+                    className="max-mobile:text-black font-serif"
                   >
                     {option.toUpperCase()}
                   </StyledListItem>
@@ -140,10 +144,11 @@ const Navigation = ({ data }) => {
             </ul>
           </div>
           <div className="mobile:hidden">
-            <button
+            <MenuButton
+              id="menuButton"
+              aria-label="menuButton"
               type="button"
               onClick={handleOpen}
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-ba rounded-lg mobile:hidden"
             >
               <svg
                 className="w-5 h-5"
@@ -160,15 +165,15 @@ const Navigation = ({ data }) => {
                   d="M1 1h15M1 7h15M1 13h15"
                 />
               </svg>
-            </button>
+            </MenuButton>
           </div>
         </div>
         {showHeaderPage && (
           <div className="flex justify-center h-screen flex-col">
-            <h1 className="font-serif font-semibold sm:text-6xl text-center content-center">
+            <h1 className="font-serif font-semibold text-4xl mobile:text-6xl text-center">
               {t('main.title')}
             </h1>
-            <h2 className="font-serif sm:text-3xl font-normal text-center content-center">
+            <h2 className="font-serif text-2xl mobile:text-3xl font-normal text-center">
               {t('main.sub_title')}
             </h2>
           </div>

@@ -22,15 +22,20 @@ export default {
         custom:
           'rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset',
       },
-      fontFamily: {
-        sans: ['PT Sans', 'sans-serif'],
-        serif: ['PT Serif', 'serif'],
-      },
     },
   },
   plugins: [
     plugin(function ({ addUtilities }) {
       addUtilities({
+        '.body2': {
+          fontSize: '13px',
+        },
+        '.subtitle': {
+          fontSize: '14px',
+        },
+        '.subtitle2': {
+          fontSize: '12px',
+        },
         '.content-auto': {
           'content-visibility': 'auto',
         },
@@ -47,9 +52,6 @@ export default {
         h1: { fontSize: '65px' },
         h2: { fontSize: '36px' },
         body: { fontSize: '16px' },
-        body2: { fontSize: '13px' },
-        subtitle: { fontSize: '14px' },
-        subtitle2: { fontSize: '12px' },
       })
     }),
   ],
