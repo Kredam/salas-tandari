@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { useSiteMetadata } from 'hooks'
+import useSiteMetadata from '../hooks/use-site-metadata'
 
 const SEO = ({ title, description, pathname, type, children, lng }) => {
   const {

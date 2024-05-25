@@ -8,7 +8,6 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
-  padding: 24px;
 `
 
 const FlexItem = styled.div`
@@ -27,10 +26,10 @@ const Footer = () => {
 
   return (
     <div className="fixed h-[100px] left-0 bottom-0 border-t-2 border-black bg-white font-serif">
-      <FlexContainer className="shadow-2xl">
+      <FlexContainer className="shadow-2xl p-5">
         <FlexItem $width={150}>
           <div>
-            <p className="body2">LOCATION</p>
+            <p className="body2">{t('location').toUpperCase()}</p>
           </div>
           <div onClick={() => showInMap()} className="cursor-pointer">
             <p className="subtitle">Slatina, Martonoš, Serbia</p>
@@ -41,12 +40,10 @@ const Footer = () => {
             <p className="body2">{t('contact.title').toUpperCase()}</p>
           </div>
           <div>
-            <p className="subtitle2">(TEL) TANDARI TÜNDE +22522222</p>
+            <p className="subtitle2">(TEL) TANDARI TÜNDE 06 42 821 495</p>
           </div>
           <div>
-            <p className="subtitle2">
-              (TEL) PÁLINKÁS JÓZSEF +381(0)63-7488-149
-            </p>
+            <p className="subtitle2">(TEL) PÁLINKÁS JÓZSEF 06 37 488 149</p>
           </div>
         </FlexItem>
         <FlexItem $width={150} className="flex justify-evenly items-center">

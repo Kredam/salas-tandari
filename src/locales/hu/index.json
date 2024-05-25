@@ -37,6 +37,7 @@
             }
         }
     },
+    "location": "Elhelyezkedés",
     "contact": {
         "title": "Kapcsolat",
         "desc": [
@@ -44,8 +45,8 @@
             "Kérdéseidet a következő emailre tudod elküldeni:",
             "info@salas-tandari.com",
             "Illetve telefonon is eltudsz minket érni, az alábbi telefonszámokon:",
-            "Tandari Tünde-",
-            "Pálinkás József +381(0)63-7488-149",
+            "Tandari Tünde 06 42 821 495",
+            "Pálinkás József 06 37 488 149",
             "Vedd fel velünk a kapcsolatot és mi garantáljuk, hogy az elkövetkező eseményedet egy felejthetetlen emlékké tesszük számotokra!"
         ]
     },

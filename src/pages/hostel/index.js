@@ -8,16 +8,11 @@ import LayoutContext from '../../hooks/layout-context'
 
 const Hostel = ({ data }) => {
   const { t } = useTranslation()
-  const { setShowHeaderPage } = useContext(LayoutContext)
-
-  useEffect(() => {
-    setShowHeaderPage(false)
-  }, [])
 
   const images = data.hostelImages.nodes.map((img) => getImage(img))
   return (
     <div className="container w-full mx-auto">
-      <h2 className="font-semibold text-center font-serif my-4">
+      <h2 className="font-semibold text-center font-serif">
         {t('hostel.title')}
       </h2>
       <div className="my-8 p-4 max-desktop:text-justify text-center">

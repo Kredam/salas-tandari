@@ -8,14 +8,9 @@ import LayoutContext from '../../hooks/layout-context'
 
 const Contact = () => {
   const { t } = useTranslation()
-  const { setShowHeaderPage } = useContext(LayoutContext)
-
-  useEffect(() => {
-    setShowHeaderPage(false)
-  }, [])
 
   return (
-    <div className="container h-full mx-auto m-8 p-8">
+    <div className="container h-full mx-auto px-8">
       <div className="flex justify-center">
         <div className="w-full xl:px-4">
           <h2 className="py-4 font-serif">
@@ -39,6 +34,7 @@ const Contact = () => {
             src="../../images/contact.jpg"
             placeholder="blurred"
             width={400}
+            quality={100}
             className="rounded-lg shadow-custom"
           />
         </div>

@@ -9,11 +9,13 @@ const LayoutContext = createContext(defaultContextValue)
 
 export const LayoutProvider = ({ children }) => {
   const [inverted, setInverted] = useState(false)
-  const [showHeaderPage, setShowHeaderPage] = useState(true)
 
   return (
     <LayoutContext.Provider
-      value={{ inverted, setInverted, setShowHeaderPage, showHeaderPage }}
+      value={{
+        inverted,
+        setInverted,
+      }}
     >
       {children}
     </LayoutContext.Provider>

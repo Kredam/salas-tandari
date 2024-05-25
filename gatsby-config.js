@@ -18,7 +18,7 @@ module.exports = {
     title: `Tandari Szállás`,
     description: 'Tandari Szállás Rendezvényház',
     defaultLang: defaultLanguage,
-    siteUrl: `https://www.salas-tandari.com`,
+    siteUrl: `https://www.new.salas-tandari.com`,
   },
   plugins: [
     'gatsby-plugin-postcss',
@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve('./src/components/layout/index.js'),
+        component: require.resolve('./src/components/layout.js'),
       },
     },
     {

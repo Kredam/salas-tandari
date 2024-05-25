@@ -37,6 +37,7 @@
             }
         }
     },
+    "location": "Location",
     "contact": {
         "title": "Contact",
         "desc": [
@@ -44,8 +45,8 @@
             "You can send your questions to the following email address:",
             "info@salas-tandari.com",
             "You can also reach us by phone at the following numbers:",
-            "Tandari Tünde-",
-            "Pálinkás József +381(0)63-7488-149",
+            "Tandari Tünde 06 42 821 495",
+            "Pálinkás József 06 37 488 149",
             "Get in touch with us, and we guarantee to make your upcoming event a memorable experience!"
         ]
     },
